@@ -2,7 +2,7 @@
 * @Author: 10261
 * @Date:   2017-11-06 10:14:47
 * @Last Modified by:   10261
-* @Last Modified time: 2017-11-07 20:56:46
+* @Last Modified time: 2017-11-07 21:10:29
 */
 'use strict';
 $(function() {
@@ -370,4 +370,4 @@ $.ajax({
 });
 setTimeout(function () {
 	golbal.init();
-}, 500); 
+}, 1000); 
