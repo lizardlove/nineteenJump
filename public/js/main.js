@@ -2,12 +2,15 @@
 * @Author: 10261
 * @Date:   2017-11-06 10:14:47
 * @Last Modified by:   10261
-* @Last Modified time: 2017-11-07 22:00:45
+* @Last Modified time: 2017-11-07 23:02:01
 */
 'use strict';
 $(function() {
 	FastClick.attach(document.body);
 	console.log("fastclick, ok");
+});
+document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {  
+	WeixinJSBridge.call('hideToolbar');  
 });
 var requestAnimFrame = (function(){
 	return window.requestAnimationFrame       ||
@@ -44,8 +47,9 @@ var golbal = {
 	setTime: {},
 	click: false,
 	scene: {},
-	rec: 3,
+	rec: 4,
 	lastTime: Date.now(),
+	startTime: Date.now(),
 	orient: "portrait",
 	collisions: [false, false, false, false],
 
@@ -63,7 +67,7 @@ var golbal = {
 		});
 
 		self.master = new Role({
-			x: 200,
+			x: 25,
 			y: 500,
 			width: 70,
 			height: 90,
@@ -113,27 +117,15 @@ var golbal = {
 		self.view.render(self.map, self.master, self.score, self.time, self.scene.gold);
 		self.setTime = setInterval(function () {
 			self.view.render(self.map, self.master, self.score, self.time, self.scene.gold);
-
-			self.view.ctx.drawImage(resources.get("./img/" + self.rec + ".png"), 0, 0, 17, 34, self.width / 2 - self.height * 3 / 20, self.height / 5, self.height * 3 / 10, self.height * 3 / 5);
 			self.rec --;
 			if (self.rec == 0) {
 				clearInterval(self.setTime);
 				self.master.sprite.run = true;
 				self.update();
-				self.setTime = setInterval(function () {
-					self.time.num++;
-					self.time.draw(self.time.num);
-				}, 1000);
+				self.startTime = Date.now();
 			}
+			self.view.ctx.drawImage(resources.get("./img/big" + self.rec + ".png"), 0, 0, 140, 300, self.width / 2 - self.height * 3 / 20, self.height / 5, self.height * 3 / 10, self.height * 3 / 5);
 		}, 1000)
-		// setTimeout(function () {
-		// 	self.master.sprite.run = true;
-		// 	self.update();
-		// 	self.setTime = setInterval(function () {
-		// 		self.time.num++;
-		// 		self.time.draw(self.time.num);
-		// 	}, 1000);
-		// }, 3000);
 	},
 	update: function () {
 		var self = this;
@@ -141,6 +133,12 @@ var golbal = {
 		var dt = (now - self.lastTime) / 1000.0;
 		self.lastTime = now;
 		self.master.sprite.update(dt);
+
+		self.time.num = Math.floor((now - self.startTime) / 1000.0);
+
+		self.time.draw(self.time.num);
+
+		// self.checkOrient();
 
 		self.checkCollisions();
 
@@ -174,7 +172,7 @@ var golbal = {
 		// }
 		// 
 		if (self.master.x + self.master.width > 21430) {
-			clearInterval(self.setTime);
+			// clearInterval(self.setTime);
 			self.master.isRun = false;
 			self.flag();
 
@@ -340,7 +338,7 @@ var golbal = {
 
 		self.view.ctx.drawImage(resources.get("./img/flag.png"), 0, 0, flag.width, flag.height, (flag.x - self.view.x) * ratio, flag.y * ratio, flag.width *ratio, flag.height * ratio);
 
-		self.scene.flag.y -= 1;
+		self.scene.flag.y -= 4;
 		console.log(0.1);
 
 		if (self.scene.flag.y < 300) {

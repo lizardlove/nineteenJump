@@ -2,7 +2,7 @@
 * @Author: 10261
 * @Date:   2017-11-06 12:12:43
 * @Last Modified by:   10261
-* @Last Modified time: 2017-11-07 20:31:44
+* @Last Modified time: 2017-11-07 22:35:18
 */
 'use strict';
 (function () {
@@ -13,7 +13,7 @@
 		this.width = O.width;
 		this.height = O.height;
 
-		this.speed = 12;
+		this.speed = 8;
 
 		this.isRun = false;
 
@@ -47,7 +47,7 @@
 				var x = self.pos[0];
 				var y = self.pos[1];
 				x += frames * self.size[0];
-				ctx.drawImage(self.img, x, y, self.size[0], self.size[1], rx * unit, ry * unit, self.size[0] * unit * 0.8, self.size[1] * unit * 0.8);
+				ctx.drawImage(self.img, x, y, self.size[0], self.size[1], rx * unit, ry * unit, self.size[0] * unit * 0.75, self.size[1] * unit * 0.75);
 			}
 		}
 	}
