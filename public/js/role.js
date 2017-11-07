@@ -2,7 +2,7 @@
 * @Author: 10261
 * @Date:   2017-11-06 12:12:43
 * @Last Modified by:   10261
-* @Last Modified time: 2017-11-07 22:35:18
+* @Last Modified time: 2017-11-08 01:08:15
 */
 'use strict';
 (function () {
@@ -12,6 +12,11 @@
 
 		this.width = O.width;
 		this.height = O.height;
+
+		this.canvas = document.createElement("canvas");
+		this.ctx = this.canvas.getContext('2d');
+		this.canvas.width = this.width;
+		this.canvas.height = this.height;
 
 		this.speed = 8;
 
@@ -33,23 +38,43 @@
 			speed: O.sprite.speed,
 			update: function (dt) {
 				this._move += this.speed * dt;
-			},
-			render: function (ctx, unit, rx, ry) {
-				var frames = 0;
-				var self = this;
-				self.img.src = self.url;
-
-				if (self.run) {
-					var max = self.frames;
-					var idx = Math.floor(self._move);
-					frames = Math.floor(idx % max);
-				}
-				var x = self.pos[0];
-				var y = self.pos[1];
-				x += frames * self.size[0];
-				ctx.drawImage(self.img, x, y, self.size[0], self.size[1], rx * unit, ry * unit, self.size[0] * unit * 0.75, self.size[1] * unit * 0.75);
 			}
+			// render: function (ctx, unit, rx, ry) {
+			// 	var frames = 0;
+			// 	var self = this;
+			// 	self.img.src = self.url;
+
+			// 	if (self.run) {
+			// 		var max = self.frames;
+			// 		var idx = Math.floor(self._move);
+			// 		frames = Math.floor(idx % max);
+			// 	}
+			// 	var x = self.pos[0];
+			// 	var y = self.pos[1];
+			// 	x += frames * self.size[0];
+			// 	ctx.drawImage(self.img, x, y, self.size[0], self.size[1], rx * unit, ry * unit, self.size[0] * unit * 0.75, self.size[1] * unit * 0.75);
+			// }
 		}
+	}
+
+	Role.prototype.render = function () {
+		var self = this;
+		var ctx = self.ctx;
+
+		self.ctx.clearRect(0, 0, self.width, self.height);
+
+		var frames = 0;
+
+		self.sprite.img.src = self.sprite.url;
+
+		if (self.sprite.run) {
+			var max = self.sprite.frames;
+			var idx = Math.floor(self.sprite._move);
+			frames = Math.floor(idx % max);
+		}
+		var x = frames * self.sprite.size[0];
+		ctx.drawImage(self.sprite.img, x, 0, self.sprite.size[0], self.sprite.size[1], 0, 0, self.width, self.height);
+
 	}
 
 	Role.prototype.move = function () {

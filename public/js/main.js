@@ -2,7 +2,7 @@
 * @Author: 10261
 * @Date:   2017-11-06 10:14:47
 * @Last Modified by:   10261
-* @Last Modified time: 2017-11-07 23:02:01
+* @Last Modified time: 2017-11-08 01:04:53
 */
 'use strict';
 $(function() {
@@ -36,7 +36,6 @@ var utils = {
 	}
 }
 var golbal = {
-	map: {},
 	master: {},
 	view: {},
 	rightDown: false,
@@ -61,16 +60,19 @@ var golbal = {
 		self.checkOrient();
 		console.log(self.orient);
 
-		self.map = new Maps({
-			width: self.scene.width,
-			height: self.scene.height,
-		});
+		var masterCanvas = document.createElement("canvas");
+		masterCanvas.width = self.width;
+		masterCanvas.height =self.height;
+		masterCanvas.style.position = "absolute";
+		masterCanvas.style.zIndex = 5;
+		document.body.appendChild(masterCanvas);
 
 		self.master = new Role({
 			x: 25,
 			y: 500,
 			width: 70,
 			height: 90,
+			canvas: masterCanvas,
 			sprite: {
 				url: "./img/sprite.png",
 				size: [100, 136],
@@ -81,15 +83,16 @@ var golbal = {
 		})
 
 		self.lastTime = Date.now();
+		self.score = new Nums();
+		self.time = new Nums();
+
 
 		var viewCanvas = document.createElement("canvas");
 		viewCanvas.width = self.width;
 		viewCanvas.height =self.height;
+		viewCanvas.style.position = "absolute";
+		viewCanvas.style.zIndex = 0;
 		document.body.appendChild(viewCanvas);
-
-		self.score = new Nums();
-		self.time = new Nums();
-
 
 		self.view = new Views({
 			canvas: viewCanvas, 
@@ -113,29 +116,34 @@ var golbal = {
 			}
 		});
 
-		self.map.render(self.scene);
-		self.view.render(self.map, self.master, self.score, self.time, self.scene.gold);
+		self.master.render();
+		self.view.render(self.master, self.score, self.time, self.scene.gold);
 		self.setTime = setInterval(function () {
-			self.view.render(self.map, self.master, self.score, self.time, self.scene.gold);
+			self.view.render(self.master, self.score, self.time, self.scene.gold);
 			self.rec --;
 			if (self.rec == 0) {
 				clearInterval(self.setTime);
 				self.master.sprite.run = true;
 				self.update();
 				self.startTime = Date.now();
+				return;
 			}
-			self.view.ctx.drawImage(resources.get("./img/big" + self.rec + ".png"), 0, 0, 140, 300, self.width / 2 - self.height * 3 / 20, self.height / 5, self.height * 3 / 10, self.height * 3 / 5);
+			console.log(self.rec);
+			self.view.viewCtx.drawImage(resources.get("./img/big" + self.rec + ".png"), 0, 0, 140, 300, self.width / 2 - self.height * 3 / 20, self.height / 5, self.height * 3 / 10, self.height * 3 / 5);
 		}, 1000)
 	},
 	update: function () {
 		var self = this;
+
+
 		var now = Date.now();
 		var dt = (now - self.lastTime) / 1000.0;
 		self.lastTime = now;
 		self.master.sprite.update(dt);
+		self.master.render();
+
 
 		self.time.num = Math.floor((now - self.startTime) / 1000.0);
-
 		self.time.draw(self.time.num);
 
 		// self.checkOrient();
@@ -164,7 +172,7 @@ var golbal = {
 			}
 		}
 
-		self.view.render(self.map, self.master, self.score, self.time, self.scene.gold);
+		self.view.render(self.master, self.score, self.time, self.scene.gold);
 
 		// if (self.rightDown) {
 		// 	self.view.move();
@@ -201,16 +209,16 @@ var golbal = {
 				    iWest = item.x,
 				    iSouth = item.y + item.height,
 				    iNorth = item.y;
-				if (mNorth - 20 < iSouth && mSouth > iNorth && mEast > iWest && mWest < iEast) {
+				if (mNorth - 10 < iSouth && mSouth > iNorth && mEast > iWest && mWest < iEast) {
 					col[0] = true;
 				} 
-				if (mEast + 20 > iWest && mWest < iEast && mNorth < iSouth && mSouth > iNorth) {
+				if (mEast + 10 > iWest && mWest < iEast && mNorth < iSouth && mSouth > iNorth) {
 					col[1] = true;
 				} 
-				if (mSouth + 20 > iNorth && mNorth < iSouth && mEast > iWest && mWest < iEast) {
+				if (mSouth + 10 > iNorth && mNorth < iSouth && mEast > iWest && mWest < iEast) {
 					col[2] = true;
 				}
-				if (mWest - 20 < iEast && mEast > iWest && mNorth < iSouth && mSouth > iNorth) {
+				if (mWest - 10 < iEast && mEast > iWest && mNorth < iSouth && mSouth > iNorth) {
 					col[3] = true;
 				}
 			}
@@ -229,8 +237,9 @@ var golbal = {
 
 		this.collisions = check(mEast, mWest, mSouth, mNorth, staticThing);
 		if (this.collisions[0] && this.collisions[1] && this.collisions[2] && this.collisions[3]) {
-			self.master.x  = self.master.x - 20;
+			self.master.x  = self.master.x - 1;
 			this.collisions = check(mEast, mWest, mSouth, mNorth, staticThing);
+			console.log(self.master.x);
 		}
 
 
@@ -318,8 +327,8 @@ var golbal = {
 			self.scene.gold.push({
 				x: x,
 				y: y,
-				width: 92, 
-				height: 77, 
+				width: 50, 
+				height: 50, 
 				eat: false
 			});
 
@@ -334,9 +343,9 @@ var golbal = {
 
 		self.master.jump();
 
-		self.view.render(self.map, self.master, self.score, self.time, self.scene.gold);
+		self.view.render(self.master, self.score, self.time, self.scene.gold);
 
-		self.view.ctx.drawImage(resources.get("./img/flag.png"), 0, 0, flag.width, flag.height, (flag.x - self.view.x) * ratio, flag.y * ratio, flag.width *ratio, flag.height * ratio);
+		self.view.viewCtx.drawImage(resources.get("./img/flag.png"), 0, 0, flag.width, flag.height, (flag.x - self.view.x) * ratio, flag.y * ratio, flag.width *ratio, flag.height * ratio);
 
 		self.scene.flag.y -= 4;
 		console.log(0.1);
