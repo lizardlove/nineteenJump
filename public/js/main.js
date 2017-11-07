@@ -2,7 +2,7 @@
 * @Author: 10261
 * @Date:   2017-11-06 10:14:47
 * @Last Modified by:   10261
-* @Last Modified time: 2017-11-07 21:10:29
+* @Last Modified time: 2017-11-07 21:36:40
 */
 'use strict';
 $(function() {
@@ -16,7 +16,7 @@ var requestAnimFrame = (function(){
            window.oRequestAnimationFrame      ||
            window.msRequestAnimationFrame     ||
            function(callback){
-           	  window.setTimeout(callback, 1000 / 60);
+           	  window.setTimeout(callback, 1000 / 30);
            };
 })();
 

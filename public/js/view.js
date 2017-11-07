@@ -2,19 +2,16 @@
 * @Author: 10261
 * @Date:   2017-11-06 15:55:42
 * @Last Modified by:   10261
-* @Last Modified time: 2017-11-07 20:22:30
+* @Last Modified time: 2017-11-07 21:41:51
 */
 (function () {
 	function Views(O) {
 		
 		this.canvas = O.canvas;
-		this.ctx = this.canvas.getContext('2d');
+		this.viewCtx = this.canvas.getContext('2d');
 
-		this.scoreCanvas = document.createElement('canvas');
-		this.scoreCtx = this.scoreCanvas.getContext('2d');
-
-		this.timeCanvas = document.createElement('canvas');
-		this.timeCtx = this.timeCanvas.getContext('2d');
+		this.staticCnavas = document.createElement("canvas");
+		this.ctx = this.staticCnavas.getContext('2d');
 
 		this.x = O.x;
 		this.y = O.y;
@@ -69,6 +66,8 @@
 
 
 		master.sprite.render(self.ctx, ratio, relaX, relaY);
+
+		self.viewCtx.drawImage(self.staticCnavas, 0, 0, self.width, self.height, 0, 0 self.width, self.height);
 		// self.ctx.fillRect(relaX * ratio, relaY * ratio, master.width * ratio, master.height * ratio);
 	}
 	window.Views = Views;
