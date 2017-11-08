@@ -2,7 +2,7 @@
 * @Author: 10261
 * @Date:   2017-11-06 12:12:43
 * @Last Modified by:   10261
-* @Last Modified time: 2017-11-08 15:05:14
+* @Last Modified time: 2017-11-08 16:15:30
 */
 'use strict';
 (function () {
@@ -28,10 +28,8 @@
 		this.jumpMax = 200;
 
 		this.sprite = {
-			url: O.sprite.url,
 			size: O.sprite.size,
 			run: false,
-			img: new Image(),
 			_move: 0,
 			pos: O.sprite.pos,
 			frames: O.sprite.frames,
@@ -50,15 +48,13 @@
 
 		var frames = 0;
 
-		self.sprite.img.src = self.sprite.url;
-
 		if (self.sprite.run) {
 			var max = self.sprite.frames;
 			var idx = Math.floor(self.sprite._move);
 			frames = Math.floor(idx % max);
 		}
 		var x = frames * self.sprite.size[0];
-		ctx.drawImage(self.sprite.img, x, 0, self.sprite.size[0], self.sprite.size[1], 0, 0, self.width, self.height);
+		ctx.drawImage(resources.get('./img/sprite.png'), x, 0, self.sprite.size[0], self.sprite.size[1], 0, 0, self.width, self.height);
 
 	}
 

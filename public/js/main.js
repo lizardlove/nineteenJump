@@ -2,7 +2,7 @@
 * @Author: 10261
 * @Date:   2017-11-06 10:14:47
 * @Last Modified by:   10261
-* @Last Modified time: 2017-11-08 15:09:21
+* @Last Modified time: 2017-11-08 16:13:56
 */
 'use strict';
 $(function() {
@@ -59,6 +59,7 @@ var golbal = {
 
 		window.onresize = utils.debounce(self.checkOrient, 300);
 		self.checkOrient();
+		
 		self.ratio = self.height / 750;
 		console.log(self.orient);
 
@@ -148,7 +149,7 @@ var golbal = {
 		var dt = (now - self.lastTime) / 1000.0;
 		self.lastTime = now;
 		self.master.sprite.update(dt);
-		// self.master.render();
+		self.master.render();
 
 
 		self.time.num = Math.floor((now - self.startTime) / 1000.0);
@@ -401,3 +402,6 @@ $.ajax({
 setTimeout(function () {
 	golbal.init();
 }, 1000); 
+// golbal.checkOrient();
+// console.log(golbal)
+// $("#headBg").css("width", self.width)

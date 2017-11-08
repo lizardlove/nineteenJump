@@ -2,7 +2,7 @@
 * @Author: 10261
 * @Date:   2017-11-07 00:33:01
 * @Last Modified by:   10261
-* @Last Modified time: 2017-11-08 13:56:26
+* @Last Modified time: 2017-11-08 16:11:11
 */
 'use strict';
 (function () {
@@ -68,7 +68,8 @@
 		                   './img/7.png',
 		                   './img/8.png',
 		                   './img/9.png',
-		                   './img/flag.png']);
+		                   './img/flag.png',
+		                   './img/sprite.png']);
 
 	setTimeout(function () {
 		console.log(resources.get("./img/bg.jpg"));
