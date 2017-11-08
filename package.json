@@ -13,5 +13,13 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.16.2"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-rev": "^8.1.0",
+    "gulp-rev-collector": "^1.2.2",
+    "gulp-uglify": "^3.0.0",
+    "run-sequence": "^2.2.0"
   }
 }

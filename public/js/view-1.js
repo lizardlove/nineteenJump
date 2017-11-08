@@ -2,7 +2,7 @@
 * @Author: 10261
 * @Date:   2017-11-06 15:55:42
 * @Last Modified by:   10261
-* @Last Modified time: 2017-11-08 01:07:06
+* @Last Modified time: 2017-11-08 10:07:27
 */
 (function () {
 	function Views(O) {
@@ -42,8 +42,8 @@
 
 
 		self.ctx.drawImage(resources.get("./img/head.png"), 0, 0, 78, 64, 50 * ratio, 25 * ratio, 78 * ratio, 64 * ratio);
-		self.ctx.drawImage(resources.get("./img/goldLogo.png"), 0, 0, 49, 48, 500 * ratio, 25 * ratio, 49 * ratio, 48 * ratio);
-		self.ctx.drawImage(resources.get("./img/timeLogo.png"), 0, 0, 42, 47, 1000 * ratio, 25 * ratio, 42 * ratio, 47 * ratio);
+		self.ctx.drawImage(resources.get("./img/goldLogo.png"), 0, 0, 49, 48, 400 * ratio, 25 * ratio, 49 * ratio, 48 * ratio);
+		self.ctx.drawImage(resources.get("./img/timeLogo.png"), 0, 0, 42, 47, 800 * ratio, 25 * ratio, 42 * ratio, 47 * ratio);
 
 
 		var count = 0;
@@ -63,8 +63,8 @@
 		if (score.num != count) {
 			score.draw(count);
 		}
-		self.ctx.drawImage(score.canvas, 0, 0, 51, 34, 570 * ratio, 25 * ratio, 51 * ratio, 34 * ratio);
-		self.ctx.drawImage(time.canvas, 0, 0, 51, 34, 1070 * ratio, 25 * ratio, 51 * ratio, 34 * ratio);
+		self.ctx.drawImage(score.canvas, 0, 0, 51, 34, 470 * ratio, 25 * ratio, 51 * ratio, 34 * ratio);
+		self.ctx.drawImage(time.canvas, 0, 0, 51, 34, 870 * ratio, 25 * ratio, 51 * ratio, 34 * ratio);
 
 
 		self.ctx.drawImage(master.canvas, 0, 0, master.width, master.height, relaX * ratio, relaY * ratio, master.width * ratio, master.height * ratio);
