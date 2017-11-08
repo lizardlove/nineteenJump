@@ -2,7 +2,7 @@
 * @Author: 10261
 * @Date:   2017-11-06 10:14:47
 * @Last Modified by:   10261
-* @Last Modified time: 2017-11-08 17:30:35
+* @Last Modified time: 2017-11-08 18:17:47
 */
 'use strict';
 $(function() {
@@ -290,9 +290,10 @@ var golbal = {
 
 		if (cw == _Width) {
 			//竖屏
-			document.querySelector('body').style.transform = "rotate(90deg)";
+			
 			self.width = document.documentElement.clientHeight;
 			self.height = document.documentElement.clientWidth;
+			document.querySelector('body').style.transform = "rotate(90deg)";
 			self.orient = 'portrait';
 		} 
 		if (cw == _Height) {
@@ -302,6 +303,8 @@ var golbal = {
 			self.height = document.documentElement.clientHeight;
 			self.orient = 'landscape';
 		}
+		$("body").css('width', self.width);
+		$("body").css('height', self.height);
 	},
 	craeteGold: function () {
 		var self = this;
@@ -406,14 +409,10 @@ $.ajax({
 		console.log(data);
 	}
 });
-// golbal.checkOrient();
-// if (golbal.orient == "landscape") {
-// 	$('body').css("width", golbal.width);
-// 	$('body').css("height", golbal.height);
-// } else {
-// 	$("body").css("height", golbal.height);
-// 	$("body").css("width", golbal.width);
-// }
-setTimeout(function () {
-	golbal.init();
-}, 1000); 
+golbal.checkOrient();
+// $('body').css("width", golbal.width);
+// $('body').css("height", golbal.height);
+
+// setTimeout(function () {
+// 	golbal.init();
+// }, 1000); 
