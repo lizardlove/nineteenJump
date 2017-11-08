@@ -2,7 +2,7 @@
 * @Author: 10261
 * @Date:   2017-11-06 15:55:42
 * @Last Modified by:   10261
-* @Last Modified time: 2017-11-08 13:35:58
+* @Last Modified time: 2017-11-08 14:43:11
 */
 (function () {
 	function Views(O) {
@@ -63,13 +63,9 @@
 		if (score.num != count) {
 			score.draw(count);
 		}
-		self.ctx.drawImage(score.canvas, 0, 0, 51, 34, 470 * ratio, 25 * ratio, 51 * ratio, 34 * ratio);
-		self.ctx.drawImage(time.canvas, 0, 0, 51, 34, 870 * ratio, 25 * ratio, 51 * ratio, 34 * ratio);
-
 
 		self.ctx.drawImage(master.canvas, 0, 0, master.width, master.height, relaX * ratio, relaY * ratio, master.width * ratio, master.height * ratio);
-		// self.ctx.fillRect(relaX * ratio, relaY * ratio, master.width * ratio, master.height * ratio);
-		
+				
 		self.viewCtx.drawImage(self.lowCanvas, 0, 0, self.width, self.height, 0, 0, self.width, self.height);
 	}
 	window.Views = Views;

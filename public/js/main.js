@@ -2,7 +2,7 @@
 * @Author: 10261
 * @Date:   2017-11-06 10:14:47
 * @Last Modified by:   10261
-* @Last Modified time: 2017-11-08 13:54:56
+* @Last Modified time: 2017-11-08 14:43:02
 */
 'use strict';
 $(function() {
@@ -77,11 +77,10 @@ var golbal = {
 		})
 
 		self.lastTime = Date.now();
-		self.score = new Nums();
-		self.time = new Nums();
-
 
 		var viewCanvas = $('#bg')[0];
+		var timeCanvas = $("#timeNum")[0];
+		var scoreCanvas = $("#scoreNum")[0];
 		var head = $('#head');
 		var score = $("#score");
 		var time = $("#time");
@@ -91,9 +90,19 @@ var golbal = {
 		score.css("height", 60 * self.ratio / 75 + "rem");
 		time.css("width", 60 * self.ratio / 75 + "rem");
 		time.css("height", 60 * self.ratio / 75 + "rem");
+		timeCanvas.width = self.width / 15;
+		timeCanvas.height = self.height / 15;
+		scoreCanvas.width = self.width / 15;
+		scoreCanvas.height = self.height / 15;
 		viewCanvas.width = self.width;
 		viewCanvas.height =self.height;
 
+		self.score = new Nums({
+			canvas: scoreCanvas
+		});
+		self.time = new Nums({
+			canvas: timeCanvas
+		});
 		self.view = new Views({
 			canvas: viewCanvas, 
 			x: 0, 
@@ -340,7 +349,7 @@ var golbal = {
 			var y1 = findY(x, 92, self.scene.step);
 			var y2 = findY(x, 92, self.scene.block);
 			var y = Math.random() > 0.5 ? y1 : y2;
-			console.log(y);
+
 			if (y == 750) {
 				y = 400;
 			}
