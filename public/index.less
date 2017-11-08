@@ -10,20 +10,38 @@
 }
 
 canvas {
-	display: block;
+	display: none;
 }
 #bg {
 	z-index: 0;
 }
 #headBg {
-	position: absolute;
-	display: none;
-	top: 0;
-	left: 0;
+	width: 100%;
+	height: 100%;
+	position: relative;
+
+	#intBg {
+		width: 100%;
+		height: 100%;
+		position: relative;
+		img {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+		}
+	}
+
+	#lingo {
+		
+	}
 }
 #score {
 	z-index: 5;
-	display: block;
+	display: none;
 	position: fixed;
 	img {
 		position: absolute;
@@ -38,7 +56,7 @@ canvas {
 #time {
 	z-index: 5;
 	position: fixed;
-	display: block;
+	display: none;
 	img {
 		position: absolute;
 		width: 100%;
@@ -52,7 +70,7 @@ canvas {
 #head {
 	z-index: 5;
 	position: fixed;
-	display: block;
+	display: none;
 	img {
 		position: absolute;
 		width: 100%;

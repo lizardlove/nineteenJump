@@ -2,7 +2,7 @@
 * @Author: 10261
 * @Date:   2017-11-06 10:14:47
 * @Last Modified by:   10261
-* @Last Modified time: 2017-11-08 16:27:38
+* @Last Modified time: 2017-11-08 17:14:25
 */
 'use strict';
 $(function() {
@@ -15,9 +15,6 @@ $(window).on('scroll.elasticity', function (e) {
     e.preventDefault();
 });
 
-document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {  
-	WeixinJSBridge.call('hideToolbar');  
-});
 var requestAnimFrame = (function(){
 	return window.requestAnimationFrame       ||
            window.webkitRequestAnimationFrame ||
@@ -144,7 +141,13 @@ var golbal = {
 				return;
 			}
 			console.log(self.rec);
-			self.view.viewCtx.drawImage(resources.get("./img/big" + self.rec + ".png"), 0, 0, 140, 300, self.width / 2 - self.height * 3 / 20, self.height / 5, self.height * 3 / 10, self.height * 3 / 5);
+			self.view.viewCtx.save();
+			self.view.viewCtx.font = "100px Arial";
+			self.view.viewCtx.textAlign = "center";
+			self.view.viewCtx.fillStyle = "#ff752a";
+			self.view.viewCtx.fillText(self.rec, self.width / 2, self.height / 2);
+			self.view.viewCtx.restore();
+			// self.view.viewCtx.drawImage(resources.get("./img/big" + self.rec + ".png"), 0, 0, 140, 300, self.width / 2 - self.height * 3 / 20, self.height / 5, self.height * 3 / 10, self.height * 3 / 5);
 		}, 1000)
 	},
 	update: function () {
@@ -393,8 +396,6 @@ var golbal = {
 	over: function () {}
 }
 
-// golbal.init();
-
 $.ajax({
 	type: 'GET',
 	url: './js/scene.json',
@@ -405,9 +406,14 @@ $.ajax({
 		console.log(data);
 	}
 });
-setTimeout(function () {
-	golbal.init();
-}, 1000); 
-// golbal.checkOrient();
-// console.log(golbal)
-// $("#headBg").css("width", self.width)
+golbal.checkOrient();
+if (golbal.orient == "landscape") {
+	$('body').css("width", golbal.width);
+	$('body').css("height", golbal.height);
+} else {
+	$("body").css("height", golbal.height);
+	$("body").css("width", golbal.width);
+}
+// setTimeout(function () {
+// 	golbal.init();
+// }, 1000); 
