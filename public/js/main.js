@@ -2,13 +2,19 @@
 * @Author: 10261
 * @Date:   2017-11-06 10:14:47
 * @Last Modified by:   10261
-* @Last Modified time: 2017-11-08 16:13:56
+* @Last Modified time: 2017-11-08 16:27:38
 */
 'use strict';
 $(function() {
 	FastClick.attach(document.body);
 	console.log("fastclick, ok");
 });
+$(window).on('scroll.elasticity', function (e) {
+    e.preventDefault();
+}).on('touchmove.elasticity', function (e) {
+    e.preventDefault();
+});
+
 document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {  
 	WeixinJSBridge.call('hideToolbar');  
 });
