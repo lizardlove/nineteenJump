@@ -8,13 +8,16 @@
 	margin: 0;
 	padding: 0;
 }
+a {
+	text-decoration: none;
+}
 #bg {
 	z-index: 0;
+	// display: block;
 	display: none;
 }
 #headBg {
-	width: 100%;
-	height: 100%;
+	// display: none;
 	display: block;
 	position: relative;
 
@@ -34,20 +37,84 @@
 	}
 
 	#lingo {
-		position: relative;
-		display: none;
+		position: absolute;
+		top: 20/75rem;
+		right: 25/75rem;
+		width: 50/75rem;
+		height: 50/75rem;
+
+		img {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+		}
 	}
 	#go {
-		position: relative;
-		display: none;
+		position: absolute;
+
 	}
 	#more {
-		position: relative;
-		display: none;
+		position: absolute;
+	}
+}
+
+#box {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: none;
+
+	#meng {
+		z-index: 5;
+		background: #000;
+		opacity: 0.5;
+		width: 100%;
+		height: 100%;
+		position: absolute;
+	}
+
+	#aleBox {
+		position: absolute;
+		z-index: 10;
+
+		img {
+			position: absolute;
+			width: 100%;
+			left: 100%;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+		}
+	}
+	#close {
+		position: absolute;
+		display: block;
+		z-index: 15;
+
+		img {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			
+		}
+	}
+	#info {
+		text-align: center;
+		position: absolute;
+		z-index: 12;
+		color: #f7b9a9;
 	}
 }
 #score {
 	z-index: 5;
+	// display: block;
 	display: none;
 	position: fixed;
 	img {
@@ -63,6 +130,7 @@
 #time {
 	z-index: 5;
 	position: fixed;
+	// display: block;
 	display: none;
 	img {
 		position: absolute;
@@ -78,6 +146,7 @@
 	z-index: 5;
 	position: fixed;
 	display: none;
+	// display: block;
 	img {
 		position: absolute;
 		width: 100%;
@@ -91,15 +160,62 @@
 
 #timeNum {
 	z-index: 5;
+	// display: block;
 	display: none;
 	position: fixed;
 }
 #scoreNum {
 	z-index: 5;
-	display: none;
+	// display: block;
 	position: fixed;
+	display: none;
 }
- @media screen and (orientation: portrait) {
+.btn {
+  display: block;
+  background-image: url(../img/btn_bg.png);
+  background-size: 100% 100%;
+  border: 0;
+  color: #fff;
+  background-color: transparent;
+  font-size: 30/75rem;
+  // font-family: 'manman';
+  &_green {
+    background-image: url(../img/btn_bg_green.png);
+  }
+}
+
+@media screen and (orientation: portrait) {
+	#go {
+		width: 250/75rem;
+		height: 100/75rem;
+		top: 5.5rem;
+		left: 7rem;
+	}
+	#more {
+		width: 250/75rem;
+		height: 100/75rem;
+		left: 7rem;
+		top: 7rem;
+	}
+	#info {
+		width: 7.5rem;
+		height: 3rem;
+		line-height: 0.6rem;
+		top: 2.5rem;
+		left: 4.5rem;
+	}
+	#close {
+		width: 50/75rem;
+		height: 50/75rem;
+		top: 1.6rem;
+		left: 11rem;
+	}
+	#aleBox {
+		width: 7rem;
+		height: 4rem;
+		top: 0.5rem;
+		left: 5rem;
+	}
 	#score {
 		top: 25/75rem;
 		left: 5rem;
@@ -122,6 +238,37 @@
 	}
 }
 @media screen and (orientation: landscape) { 
+	#go {
+		width: 140/75rem;
+		height: 50/75rem;
+		left: 5 - 55/75rem;
+		top: 260/75rem;
+	}
+	#aleBox {
+		width: 5rem;
+		height: 3rem;
+		top: 0.5rem;
+		left: 2.5rem;
+	}
+	#close {
+		width: 30/75rem;
+		height: 30/75rem;
+		top: 1.4rem;
+		left: 6.7rem;
+	}
+	#info {
+		width: 5rem;
+		height: 3rem;
+		line-height: 0.6rem;
+		top: 1.5rem;
+		left: 2.5rem;
+	}
+	#more {
+		width: 140/75rem;
+		height: 50/75rem;
+		left: 5 - 55/75rem;
+		top: 320/75rem;
+	}
 	#score {
 		top: 12.5/75rem;
 		left: 280/75rem;

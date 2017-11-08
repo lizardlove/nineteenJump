@@ -2,7 +2,7 @@
 * @Author: 10261
 * @Date:   2017-11-06 10:14:47
 * @Last Modified by:   10261
-* @Last Modified time: 2017-11-08 18:17:47
+* @Last Modified time: 2017-11-08 20:31:11
 */
 'use strict';
 $(function() {
@@ -60,7 +60,8 @@ var golbal = {
 
 		var self = this;
 
-		window.onresize = utils.debounce(self.checkOrient, 300);
+		self.click = false;
+
 		self.checkOrient();
 		
 		self.ratio = self.height / 750;
@@ -303,30 +304,19 @@ var golbal = {
 			self.height = document.documentElement.clientHeight;
 			self.orient = 'landscape';
 		}
-		$("body").css('width', self.width);
-		$("body").css('height', self.height);
+
+		$("#headBg").css("width", self.width);
+		$("#headBg").css("height", self.height);
 	},
 	craeteGold: function () {
 		var self = this;
 
 		var num = parseInt(Math.random() * 40 + 80);
 		var unit = self.scene.width / num;
-		var keyword = ['文化', '制度', '经济', '安全', '创新', '自由',
-		               '法制', '和谐', '文明', '平等', '公正', '富强',
-		               '诚信', '道路自信', '民主', '新时代', '伟大复兴',
-		               '改革开放', '云计算', '数字中国', '文化自信', '不忘初心',
-		               '伟大工程', '精准脱贫', '法治', '三严三实', '打虎拍蝇',
-		               '群众路线', '中国梦', '理论仔细', '供给侧', '政治意识',
-		               '敬业', '从严治党', '看齐意识', '四个全面', '友善',
-		               '数字经济', '人工智能', '乡村振兴', '和平共处', '反腐倡廉',
-		               '五位一体', '平等', '科教兴国', '爱国', '八项规定', '制度自信',
-		               '创新驱动', '绿水青山', '一带一路', '军民融合', '共享经济', 
-		               '两学一做', '核心意识', '大局意识', '人才强国', '健康中国',
-		               '牢记使命', '伟大事业', '伟大梦想', '美丽中国', '伟大斗争', 
-		               '工匠精神', '人民', '大数据'];
 
 		self.scene.gold = [];
-
+		var str = '富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善,伟大复兴,新时代,从严治党,五位一体,四个全面,中国梦,不忘初心,牢记使命,供给侧,一带一路,数字经济,人工智能,反腐倡廉,大数据,云计算,创新驱动,创新创业,人才强国,乡村振兴,军民融合,和平共处,绿水青山,群众路线,三严三实,两学一做,八项规定,打虎拍蝇,理论自信.道路自信,文化自信,制度自信,工匠精神,健康中国,美丽中国,数字中国,精准扶贫,精准脱贫,伟大工程,伟大事业,伟大梦想,伟大斗争,科教兴国,共享经济,政治意识,大局意识,核心意识,看齐意识,改革开放,爱国精神,国家意识,全球治理观,人民为中心,新发展理念,区域协调发展';
+		var keyword = str.split(',');
 		function findY(x, width, block) {
 			var box = [];
 			var min = 750;
@@ -387,16 +377,23 @@ var golbal = {
 		console.log(0.1);
 
 		if (self.scene.flag.y < 300) {
-			//传递数据，游戏结束
+			function asdasdaflfajkbfdksadknaskdna(afmasdknkasdasfankmlkohiqwei){afmasdknkasdasfankmlkohiqwei=afmasdknkasdasfankmlkohiqwei||10;var asdklnalsfnn="";for(var i=0;i<afmasdknkasdasfankmlkohiqwei;i++){asdklnalsfnn+=Math.floor(Math.random()*10)}return asdklnalsfnn}function kasaasfnkafjaisdjhn(asdasdasdasfasc){return btoa(encodeURIComponent(""+asdasdaflfajkbfdksadknaskdna()+asdasdasdasfasc+asdasdaflfajkbfdksadknaskdna()+"").replace(/%([0-9A-F]{2})/g,function(match,p1){return String.fromCharCode("0x"+p1)}))}function asdnasofbasofnoasdimas(asidafinowefpoasdnams,maspo){return kasaasfnkafjaisdjhn(asidafinowefpoasdnams,maspo)};
+			var data = asdnasofbasofnoasdimas('shitidsbllp' + asdnasofbasofnoasdimas(self.time.num) + 'xiyiailolifuck' + asdnasofbasofnoasdimas(self.score.num) + 'bitchfackyangqifan');
+			$.ajax({
+				type: "POST",
+				url: "./setScore",
+				data: data,
+				success: function (result) {
+					window.location.href = "./results";
+				}
+			})
 			console.log("game over");
 		} else {
 			requestAnimFrame(function () {
 				self.flag();
 			});
 		}
-	},
-	reverse: function () {},
-	over: function () {}
+	}
 }
 
 $.ajax({
@@ -409,9 +406,42 @@ $.ajax({
 		console.log(data);
 	}
 });
+window.onresize = utils.debounce(golbal.checkOrient, 300);
 golbal.checkOrient();
-// $('body').css("width", golbal.width);
-// $('body').css("height", golbal.height);
+
+
+var gos = $("#go"),
+    lingos = $("#lingo"),
+    mores = $("#more"),
+    heads = $("#head"),
+    scores = $("#score"),
+    times = $("#time"),
+    bgs = $('#bg'),
+    boxs = $("#box"),
+    timeNums = $("#timeNum"),
+    scoreNums = $("#scoreNum"),
+    headBgs = $("#headBg"),
+    closes = $("#close");
+
+gos.on('click', function () {
+	headBgs.css("display", "none");
+	heads.css("display", "block");
+	scores.css("display", "block");
+	times.css("display", "block");
+	bgs.css("display", "block");
+	timeNums.css("display", "block");
+	scoreNums.css("display", "block");
+	scores.css("display", "block");
+	setTimeout(function () {
+		golbal.init()
+	}, 500);
+});
+lingos.on('click', function () {
+	boxs.css("display", "block");
+});
+closes.on('click', function () {
+	boxs.css("display", "none");
+})
 
 // setTimeout(function () {
 // 	golbal.init();
