@@ -2,7 +2,7 @@
 * @Author: 10261
 * @Date:   2017-11-06 10:14:47
 * @Last Modified by:   10261
-* @Last Modified time: 2017-11-08 12:02:12
+* @Last Modified time: 2017-11-08 13:54:56
 */
 'use strict';
 $(function() {
@@ -47,6 +47,7 @@ var golbal = {
 	click: false,
 	scene: {},
 	rec: 4,
+	ratio: 0,
 	lastTime: Date.now(),
 	startTime: Date.now(),
 	orient: "portrait",
@@ -58,6 +59,7 @@ var golbal = {
 
 		window.onresize = utils.debounce(self.checkOrient, 300);
 		self.checkOrient();
+		self.ratio = self.height / 750;
 		console.log(self.orient);
 
 		self.master = new Role({
@@ -79,10 +81,18 @@ var golbal = {
 		self.time = new Nums();
 
 
-		var viewCanvas = document.createElement("canvas");
+		var viewCanvas = $('#bg')[0];
+		var head = $('#head');
+		var score = $("#score");
+		var time = $("#time");
+		head.css("width", 80 * self.ratio / 75 + "rem");
+		head.css("height", 80 * self.ratio / 75 + "rem");
+		score.css("width", 60 * self.ratio / 75 + "rem");
+		score.css("height", 60 * self.ratio / 75 + "rem");
+		time.css("width", 60 * self.ratio / 75 + "rem");
+		time.css("height", 60 * self.ratio / 75 + "rem");
 		viewCanvas.width = self.width;
 		viewCanvas.height =self.height;
-		document.body.appendChild(viewCanvas);
 
 		self.view = new Views({
 			canvas: viewCanvas, 
@@ -136,8 +146,6 @@ var golbal = {
 		self.time.num = Math.floor((now - self.startTime) / 1000.0);
 		self.time.draw(self.time.num);
 
-		// self.checkOrient();
-
 		self.checkCollisions();
 
 		if (self.collisions[1]) {
@@ -160,14 +168,14 @@ var golbal = {
 			if (self.master.x - self.view.x > self.view.width * (750 / self.view.height) / 2 && self.view.x + self.view.width * (750 / self.view.height) < self.scene.width) {
 				self.view.move();
 			}
-			if (self.view.x + self.view.width * (750 / self.view.height) >= self.scene.width) {
-				var ratio = self.view.height / 750;
-				var flag = self.scene.flag;
-				self.view.viewCtx.drawImage(resources.get("./img/flag.png"), 0, 0, flag.width, flag.height, (flag.x - self.view.x) * ratio, flag.y * ratio, flag.width *ratio, flag.height * ratio);
-			}
 		}
 
 		self.view.render(self.master, self.score, self.time, self.scene.gold);
+		if (self.view.x + self.view.width * (750 / self.view.height) >= self.scene.width) {
+			var ratio = self.view.height / 750;
+			var flag = self.scene.flag;
+			self.view.viewCtx.drawImage(resources.get("./img/flag.png"), 0, 0, flag.width, flag.height, (flag.x - self.view.x) * ratio, flag.y * ratio, flag.width *ratio, flag.height * ratio);
+		}
 
 		// if (self.rightDown) {
 		// 	self.view.move();

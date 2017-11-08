@@ -2,7 +2,7 @@
 * @Author: 10261
 * @Date:   2017-11-06 15:55:42
 * @Last Modified by:   10261
-* @Last Modified time: 2017-11-08 11:45:50
+* @Last Modified time: 2017-11-08 13:35:58
 */
 (function () {
 	function Views(O) {
@@ -39,12 +39,6 @@
 
 		self.ctx.clearRect(0, 0, self.width, self.height);
 		self.ctx.drawImage(resources.get("./img/bg.jpg"), self.x, 0, self.width * (750 / self.height), 750, 0, 0, self.width, self.height);
-
-
-		self.ctx.drawImage(resources.get("./img/head.png"), 0, 0, 78, 64, 50 * ratio, 25 * ratio, 78 * ratio, 64 * ratio);
-		self.ctx.drawImage(resources.get("./img/goldLogo.png"), 0, 0, 49, 48, 400 * ratio, 25 * ratio, 49 * ratio, 48 * ratio);
-		self.ctx.drawImage(resources.get("./img/timeLogo.png"), 0, 0, 42, 47, 800 * ratio, 25 * ratio, 42 * ratio, 47 * ratio);
-
 
 		var count = 0;
 

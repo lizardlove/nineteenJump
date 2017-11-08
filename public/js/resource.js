@@ -2,7 +2,7 @@
 * @Author: 10261
 * @Date:   2017-11-07 00:33:01
 * @Last Modified by:   10261
-* @Last Modified time: 2017-11-08 10:39:43
+* @Last Modified time: 2017-11-08 13:56:26
 */
 'use strict';
 (function () {
@@ -57,10 +57,7 @@
 		                   './img/big1.png',
 		                   './img/big2.png',
 		                   './img/big3.png',
-		                   './img/gold.png',
-		                   './img/head.png',
 		                   './img/goldLogo.png',
-		                   './img/timeLogo.png',
 		                   './img/0.png', 
 		                   './img/1.png', 
 		                   './img/2.png',

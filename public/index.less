@@ -1,0 +1,86 @@
+/*
+* @Author: 10261
+* @Date:   2017-11-08 12:36:56
+* @Last Modified by:   10261
+* @Last Modified time: 2017-11-08 12:38:50
+*/
+* {
+	margin: 0;
+	padding: 0;
+}
+
+canvas {
+	display: block;
+}
+#bg {
+	z-index: 0;
+}
+
+ @media screen and (orientation: portrait) {
+	#score {
+		top: 25/75rem;
+		left: 5rem;
+	}
+	#time {
+		top: 25/75rem;
+		left: 10rem;
+	}
+	#head {
+		top: 25/75rem;
+		left: 50/75rem;
+	}
+}
+@media screen and (orientation: landscape) { 
+	#score {
+		top: 12.5/75rem;
+		left: 280/75rem;
+	}
+	#time {
+		top: 12.5/75rem;
+		left: 550/75rem;
+	}
+	#head {
+		top: 12.5/75rem;
+		left: 50/75rem;
+	}
+}
+#score {
+	z-index: 5;
+	position: fixed;
+	img {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
+}
+#time {
+	z-index: 5;
+	position: fixed;
+	img {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
+}
+#head {
+	z-index: 5;
+	position: fixed;
+
+	img {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
+}
