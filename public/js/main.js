@@ -2,7 +2,7 @@
 * @Author: 10261
 * @Date:   2017-11-06 10:14:47
 * @Last Modified by:   10261
-* @Last Modified time: 2017-11-08 14:43:02
+* @Last Modified time: 2017-11-08 15:09:21
 */
 'use strict';
 $(function() {
@@ -125,7 +125,6 @@ var golbal = {
 			}
 		});
 
-		self.master.render();
 		self.view.render(self.master, self.score, self.time, self.scene.gold);
 		self.setTime = setInterval(function () {
 			self.view.render(self.master, self.score, self.time, self.scene.gold);
@@ -149,7 +148,7 @@ var golbal = {
 		var dt = (now - self.lastTime) / 1000.0;
 		self.lastTime = now;
 		self.master.sprite.update(dt);
-		self.master.render();
+		// self.master.render();
 
 
 		self.time.num = Math.floor((now - self.startTime) / 1000.0);
@@ -186,13 +185,7 @@ var golbal = {
 			self.view.viewCtx.drawImage(resources.get("./img/flag.png"), 0, 0, flag.width, flag.height, (flag.x - self.view.x) * ratio, flag.y * ratio, flag.width *ratio, flag.height * ratio);
 		}
 
-		// if (self.rightDown) {
-		// 	self.view.move();
-		// 	self.view.render(self.map, self.master);
-		// }
-		// 
 		if (self.master.x + self.master.width > 21430) {
-			// clearInterval(self.setTime);
 			self.master.isRun = false;
 			self.flag();
 
