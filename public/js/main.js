@@ -2,7 +2,7 @@
 * @Author: 10261
 * @Date:   2017-11-06 10:14:47
 * @Last Modified by:   10261
-* @Last Modified time: 2017-11-08 09:54:11
+* @Last Modified time: 2017-11-08 11:47:43
 */
 'use strict';
 $(function() {
@@ -283,6 +283,19 @@ var golbal = {
 
 		var num = parseInt(Math.random() * 40 + 80);
 		var unit = self.scene.width / num;
+		var keyword = ['文化', '制度', '经济', '安全', '创新', '自由',
+		               '法制', '和谐', '文明', '平等', '公正', '富强',
+		               '诚信', '道路自信', '民主', '新时代', '伟大复兴',
+		               '改革开放', '云计算', '数字中国', '文化自信', '不忘初心',
+		               '伟大工程', '精准脱贫', '法治', '三严三实', '打虎拍蝇',
+		               '群众路线', '中国梦', '理论仔细', '供给侧', '政治意识',
+		               '敬业', '从严治党', '看齐意识', '四个全面', '友善',
+		               '数字经济', '人工智能', '乡村振兴', '和平共处', '反腐倡廉',
+		               '五位一体', '平等', '科教兴国', '爱国', '八项规定', '制度自信',
+		               '创新驱动', '绿水青山', '一带一路', '军民融合', '共享经济', 
+		               '两学一做', '核心意识', '大局意识', '人才强国', '健康中国',
+		               '牢记使命', '伟大事业', '伟大梦想', '美丽中国', '伟大斗争', 
+		               '工匠精神', '人民', '大数据'];
 
 		self.scene.gold = [];
 
@@ -314,12 +327,17 @@ var golbal = {
 			var y1 = findY(x, 92, self.scene.step);
 			var y2 = findY(x, 92, self.scene.block);
 			var y = Math.random() > 0.5 ? y1 : y2;
+			console.log(y);
+			if (y == 750) {
+				y = 400;
+			}
 			self.scene.gold.push({
-				x: x,
-				y: y,
+				x: Math.floor(x),
+				y: Math.floor(y),
 				width: 50, 
 				height: 50, 
-				eat: false
+				eat: false,
+				data: keyword[Math.floor(Math.random()*(keyword.length + 1))]
 			});
 
 		}

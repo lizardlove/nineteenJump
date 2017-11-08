@@ -2,7 +2,7 @@
 * @Author: 10261
 * @Date:   2017-11-06 15:55:42
 * @Last Modified by:   10261
-* @Last Modified time: 2017-11-08 10:07:27
+* @Last Modified time: 2017-11-08 11:45:50
 */
 (function () {
 	function Views(O) {
@@ -48,13 +48,19 @@
 
 		var count = 0;
 
-		for (var i = 0; i < gold.length; i++) {
+		for (var i = 1; i < gold.length; i++) {
 			var item = gold[i];
+			self.ctx.save();
+			self.ctx.font = "15px Arial";
 			if (item.x + item.width > self.x && item.x < self.x + self.width * (750 / self.height)) {
 				if (!item.eat) {
+					self.ctx.textAlign = "center";
+					self.ctx.fillStyle = "#ff752a";
+					self.ctx.fillText(item.data, (item.x - self.x + item.width / 2) * ratio, item.y * ratio - 5);
 					self.ctx.drawImage(resources.get("./img/goldLogo.png"), 0, 0, item.width, item.height, (item.x - self.x) * ratio, item.y * ratio, item.width * ratio, item.height * ratio);
 				}
 			}
+			self.ctx.restore();
 			if (item.eat) {
 				count++;
 			}
