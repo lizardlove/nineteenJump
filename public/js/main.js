@@ -2,7 +2,7 @@
 * @Author: 10261
 * @Date:   2017-11-06 10:14:47
 * @Last Modified by:   10261
-* @Last Modified time: 2017-11-08 17:14:25
+* @Last Modified time: 2017-11-08 17:30:35
 */
 'use strict';
 $(function() {
@@ -348,7 +348,7 @@ var golbal = {
 
 		for (var i = 0; i < num - 5; i++) {
 
-			var x = unit * (i + 3 + Math.random());
+			var x = unit * (i + 2 + Math.random());
 			var y1 = findY(x, 92, self.scene.step);
 			var y2 = findY(x, 92, self.scene.block);
 			var y = Math.random() > 0.5 ? y1 : y2;
@@ -406,14 +406,14 @@ $.ajax({
 		console.log(data);
 	}
 });
-golbal.checkOrient();
-if (golbal.orient == "landscape") {
-	$('body').css("width", golbal.width);
-	$('body').css("height", golbal.height);
-} else {
-	$("body").css("height", golbal.height);
-	$("body").css("width", golbal.width);
-}
-// setTimeout(function () {
-// 	golbal.init();
-// }, 1000); 
+// golbal.checkOrient();
+// if (golbal.orient == "landscape") {
+// 	$('body').css("width", golbal.width);
+// 	$('body').css("height", golbal.height);
+// } else {
+// 	$("body").css("height", golbal.height);
+// 	$("body").css("width", golbal.width);
+// }
+setTimeout(function () {
+	golbal.init();
+}, 1000); 
