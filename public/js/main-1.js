@@ -2,7 +2,7 @@
 * @Author: 10261
 * @Date:   2017-11-06 10:14:47
 * @Last Modified by:   10261
-* @Last Modified time: 2017-11-08 01:04:53
+* @Last Modified time: 2017-11-08 09:54:11
 */
 'use strict';
 $(function() {
@@ -60,19 +60,11 @@ var golbal = {
 		self.checkOrient();
 		console.log(self.orient);
 
-		var masterCanvas = document.createElement("canvas");
-		masterCanvas.width = self.width;
-		masterCanvas.height =self.height;
-		masterCanvas.style.position = "absolute";
-		masterCanvas.style.zIndex = 5;
-		document.body.appendChild(masterCanvas);
-
 		self.master = new Role({
 			x: 25,
 			y: 500,
 			width: 70,
 			height: 90,
-			canvas: masterCanvas,
 			sprite: {
 				url: "./img/sprite.png",
 				size: [100, 136],
@@ -90,8 +82,6 @@ var golbal = {
 		var viewCanvas = document.createElement("canvas");
 		viewCanvas.width = self.width;
 		viewCanvas.height =self.height;
-		viewCanvas.style.position = "absolute";
-		viewCanvas.style.zIndex = 0;
 		document.body.appendChild(viewCanvas);
 
 		self.view = new Views({
