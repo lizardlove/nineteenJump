@@ -53,12 +53,18 @@ a {
 			bottom: 0;
 		}
 	}
-	#go {
+	.niubi {
 		position: absolute;
+		left: 0;
+		right: 0;
+		margin: auto;
 
-	}
-	#more {
-		position: absolute;
+		#go {
+			position: relative;
+		}
+		#more {
+			position: relative;
+		}
 	}
 }
 
@@ -78,14 +84,23 @@ a {
 		height: 100%;
 		position: absolute;
 	}
-
+	.fuck {
+		position: absolute;
+		margin: auto;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
 	#aleBox {
 		position: absolute;
 		z-index: 10;
-
+		width: 100%;
+		height: 100%;
 		img {
 			position: absolute;
 			width: 100%;
+			height: 100%;
 			left: 100%;
 			top: 0;
 			left: 0;
@@ -183,38 +198,36 @@ a {
     background-image: url(../img/btn_bg_green.png);
   }
 }
-
+// 竖屏
 @media screen and (orientation: portrait) {
 	#go {
 		width: 250/75rem;
 		height: 100/75rem;
-		top: 5.5rem;
-		left: 7rem;
 	}
 	#more {
 		width: 250/75rem;
 		height: 100/75rem;
-		left: 7rem;
-		top: 7rem;
+		margin-top: 50/75rem;
+	}
+	.niubi {
+		width: 250/75rem;
+		height: 250/75rem;
+		bottom: 1.5rem;
 	}
 	#info {
 		width: 7.5rem;
 		height: 3rem;
 		line-height: 0.6rem;
-		top: 2.5rem;
-		left: 4.5rem;
+		top: 2rem;
+	}
+	.fuck {
+		width: 7rem;
+		height: 6rem;
 	}
 	#close {
 		width: 50/75rem;
 		height: 50/75rem;
-		top: 1.6rem;
-		left: 11rem;
-	}
-	#aleBox {
-		width: 7rem;
-		height: 4rem;
-		top: 0.5rem;
-		left: 5rem;
+		top: .6rem;
 	}
 	#score {
 		top: 25/75rem;
@@ -241,33 +254,42 @@ a {
 	#go {
 		width: 140/75rem;
 		height: 50/75rem;
-		left: 5 - 55/75rem;
-		top: 260/75rem;
 	}
-	#aleBox {
-		width: 5rem;
-		height: 3rem;
-		top: 0.5rem;
-		left: 2.5rem;
+	// #aleBox {
+	// 	width: 100%;
+	// 	height: 100%;
+	// 	// top: 0.5rem;
+	// 	// left: 2.5rem;
+	// 	 img {
+	// 		width: 100%;
+	// 	}
+	// }
+	.fuck {
+		width: 6rem;
+		height: 5rem;
+	}
+	.niubi {
+		width: 140/75rem;
+		height: 130/75rem;
+		bottom: 1rem;
 	}
 	#close {
 		width: 30/75rem;
 		height: 30/75rem;
-		top: 1.4rem;
-		left: 6.7rem;
+		top: .6rem;
+		left: .2rem;
 	}
 	#info {
 		width: 5rem;
 		height: 3rem;
 		line-height: 0.6rem;
 		top: 1.5rem;
-		left: 2.5rem;
+		left: .5rem;
 	}
 	#more {
 		width: 140/75rem;
 		height: 50/75rem;
-		left: 5 - 55/75rem;
-		top: 320/75rem;
+		margin-top: 30/75rem;
 	}
 	#score {
 		top: 12.5/75rem;

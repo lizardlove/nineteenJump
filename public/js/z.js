@@ -2,7 +2,7 @@
 * @Author: 10261
 * @Date:   2017-11-06 10:14:47
 * @Last Modified by:   10261
-* @Last Modified time: 2017-11-08 20:31:11
+* @Last Modified time: 2017-11-08 21:15:20
 */
 'use strict';
 $(function() {
@@ -377,7 +377,7 @@ var golbal = {
 		console.log(0.1);
 
 		if (self.scene.flag.y < 300) {
-			function asdasdaflfajkbfdksadknaskdna(afmasdknkasdasfankmlkohiqwei){afmasdknkasdasfankmlkohiqwei=afmasdknkasdasfankmlkohiqwei||10;var asdklnalsfnn="";for(var i=0;i<afmasdknkasdasfankmlkohiqwei;i++){asdklnalsfnn+=Math.floor(Math.random()*10)}return asdklnalsfnn}function kasaasfnkafjaisdjhn(asdasdasdasfasc){return btoa(encodeURIComponent(""+asdasdaflfajkbfdksadknaskdna()+asdasdasdasfasc+asdasdaflfajkbfdksadknaskdna()+"").replace(/%([0-9A-F]{2})/g,function(match,p1){return String.fromCharCode("0x"+p1)}))}function asdnasofbasofnoasdimas(asidafinowefpoasdnams,maspo){return kasaasfnkafjaisdjhn(asidafinowefpoasdnams,maspo)};
+			function asdasdaflfajkbfdksadknaskdna(afmasdknkasdasfankmlkohiqwei){afmasdknkasdasfankmlkohiqwei=afmasdknkasdasfankmlkohiqwei||10;var asdklnalsfnn="";for(var i=0;i<afmasdknkasdasfankmlkohiqwei;i++){asdklnalsfnn+=Math.floor(Math.random()*10)}return asdklnalsfnn}function kasaasfnkafjaisdjhn(asdasdasdasfasc){return btoa(encodeURIComponent("umrcaonimayangqifanumr"+asdasdaflfajkbfdksadknaskdna()+asdasdasdasfasc+asdasdaflfajkbfdksadknaskdna()+"umrcaonimayangqifanumr").replace(/%([0-9A-F]{2})/g,function(match,p1){return String.fromCharCode("0x"+p1)}))}function asdnasofbasofnoasdimas(asidafinowefpoasdnams,maspo){return kasaasfnkafjaisdjhn(asidafinowefpoasdnams,maspo)};
 			var data = asdnasofbasofnoasdimas('shitidsbllp' + asdnasofbasofnoasdimas(self.time.num) + 'xiyiailolifuck' + asdnasofbasofnoasdimas(self.score.num) + 'bitchfackyangqifan');
 			$.ajax({
 				type: "POST",
@@ -407,8 +407,8 @@ $.ajax({
 	}
 });
 window.onresize = utils.debounce(golbal.checkOrient, 300);
-golbal.checkOrient();
 
+golbal.checkOrient();
 
 var gos = $("#go"),
     lingos = $("#lingo"),
