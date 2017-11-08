@@ -2,7 +2,7 @@
 * @Author: 10261
 * @Date:   2017-11-06 10:14:47
 * @Last Modified by:   10261
-* @Last Modified time: 2017-11-08 11:47:43
+* @Last Modified time: 2017-11-08 12:02:12
 */
 'use strict';
 $(function() {
@@ -159,6 +159,11 @@ var golbal = {
 		if (self.master.isRun) {
 			if (self.master.x - self.view.x > self.view.width * (750 / self.view.height) / 2 && self.view.x + self.view.width * (750 / self.view.height) < self.scene.width) {
 				self.view.move();
+			}
+			if (self.view.x + self.view.width * (750 / self.view.height) >= self.scene.width) {
+				var ratio = self.view.height / 750;
+				var flag = self.scene.flag;
+				self.view.viewCtx.drawImage(resources.get("./img/flag.png"), 0, 0, flag.width, flag.height, (flag.x - self.view.x) * ratio, flag.y * ratio, flag.width *ratio, flag.height * ratio);
 			}
 		}
 
@@ -337,7 +342,7 @@ var golbal = {
 				width: 50, 
 				height: 50, 
 				eat: false,
-				data: keyword[Math.floor(Math.random()*(keyword.length + 1))]
+				data: keyword[Math.floor(Math.random()*keyword.length)]
 			});
 
 		}
