@@ -2,7 +2,7 @@
 * @Author: 10261
 * @Date:   2017-11-06 15:55:42
 * @Last Modified by:   10261
-* @Last Modified time: 2017-11-08 14:43:11
+* @Last Modified time: 2017-11-08 16:31:34
 */
 (function () {
 	function Views(O) {
@@ -17,7 +17,7 @@
 
 		this.x = O.x;
 		this.y = O.y;
-		this.speed = 8;
+		this.speed = 5;
 
 		this.width = this.canvas.width;
 		this.height = this.canvas.height;

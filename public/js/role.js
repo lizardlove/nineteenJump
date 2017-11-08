@@ -2,7 +2,7 @@
 * @Author: 10261
 * @Date:   2017-11-06 12:12:43
 * @Last Modified by:   10261
-* @Last Modified time: 2017-11-08 16:15:30
+* @Last Modified time: 2017-11-08 16:31:29
 */
 'use strict';
 (function () {
@@ -18,7 +18,7 @@
 		this.canvas.width = this.width;
 		this.canvas.height = this.height;
 
-		this.speed = 8;
+		this.speed = 5;
 
 		this.isRun = false;
 
